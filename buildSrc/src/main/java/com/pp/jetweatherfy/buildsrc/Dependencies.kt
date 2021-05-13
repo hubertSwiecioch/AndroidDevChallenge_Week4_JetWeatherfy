@@ -82,4 +82,22 @@ object Libs {
         const val gradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:$version"
     }
 
+    object Retrofit {
+        private const val version = "2.9.0"
+        const val retrofitConverter = "com.squareup.retrofit2:converter-gson:${version}"
+        const val retrofit = "com.squareup.retrofit2:retrofit:${version}"
+    }
+
+    object Room {
+        private const val version = "2.2.5"
+        const val roomCompiler = "androidx.room:room-compiler:${version}"
+        const val roomRuntime = "androidx.room:room-runtime:${version}"
+        const val roomKtx = "androidx.room:room-ktx:${version}"
+    }
+
+    object OkHttp {
+        private const val version = "4.7.2"
+        const val okHttpInterceptor = "com.squareup.okhttp3:logging-interceptor:${version}"
+    }
+
 }
