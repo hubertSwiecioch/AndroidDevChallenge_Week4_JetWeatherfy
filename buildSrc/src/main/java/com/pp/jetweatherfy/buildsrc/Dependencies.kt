@@ -10,7 +10,7 @@ object Configs {
 }
 
 object ClassPaths {
-    const val gradlePlugin = "com.android.tools.build:gradle:7.0.0-alpha14"
+    const val gradlePlugin = "com.android.tools.build:gradle:7.0.0-alpha15"
     const val kotlinPlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:1.4.31"
 }
 
