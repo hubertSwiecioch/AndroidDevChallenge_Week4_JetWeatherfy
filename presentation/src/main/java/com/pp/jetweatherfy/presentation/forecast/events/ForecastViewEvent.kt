@@ -16,12 +16,13 @@
 package com.pp.jetweatherfy.presentation.forecast.events
 
 import com.pp.jetweatherfy.domain.model.DailyForecast
+import com.pp.jetweatherfy.domain.model.Location
 import com.pp.jetweatherfy.presentation.forecast.state.ViewStatus
 import com.pp.jetweatherfy.presentation.forecast.state.ViewType
 import com.pp.jetweatherfy.presentation.forecast.state.WeatherUnit
 
 sealed class ForecastViewEvent {
-    data class GetForecast(val city: String) : ForecastViewEvent()
+    data class GetForecast(val location: Location) : ForecastViewEvent()
     data class SetSelectedDailyForecast(val selectedDailyForecast: DailyForecast) : ForecastViewEvent()
     data class SetViewStatus(val viewStatus: ViewStatus) : ForecastViewEvent()
     data class SetViewType(val viewType: ViewType) : ForecastViewEvent()

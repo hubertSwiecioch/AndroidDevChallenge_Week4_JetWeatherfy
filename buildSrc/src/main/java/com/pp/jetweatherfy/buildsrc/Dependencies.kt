@@ -100,4 +100,9 @@ object Libs {
         const val okHttpInterceptor = "com.squareup.okhttp3:logging-interceptor:${version}"
     }
 
+    object Gson {
+        private const val version = "2.8.6"
+        const val gson = "com.google.code.gson:gson:${version}"
+    }
+
 }

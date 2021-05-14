@@ -19,6 +19,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField("String", "OPEN_WEATHER_API_KEY", "\"" + getOpeWeatherApiKey() + "\"")
     }
 
     compileOptions {
@@ -46,4 +48,12 @@ dependencies {
     kapt Libs.Hilt.googleCompiler
     
     implementation Libs.DateTime.jodaTime
+
+    implementation Libs.Retrofit.retrofit
+    implementation Libs.Retrofit.retrofitConverter
+    implementation Libs.OkHttp.okHttpInterceptor
+}
+
+def getOpeWeatherApiKey() {
+    return project.findProperty("openweather_api_key")
 }

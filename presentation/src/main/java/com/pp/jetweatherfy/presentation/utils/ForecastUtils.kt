@@ -28,11 +28,11 @@ import com.pp.jetweatherfy.domain.model.HourlyForecast
 import com.pp.jetweatherfy.domain.model.Weather
 import com.pp.jetweatherfy.presentation.R
 import org.joda.time.LocalDateTime
-import java.util.Locale
+import java.util.*
 
 @Composable
 fun DailyForecast.getFormattedTime(): String {
-    val timestampTime = LocalDateTime.parse(timestamp)
+    val timestampTime = LocalDateTime(timestamp)
     val today = LocalDateTime.now()
     return when {
         timestampTime.dayOfYear == today.dayOfYear && timestampTime.year == today.year -> stringResource(
@@ -48,7 +48,7 @@ fun DailyForecast.getFormattedTime(): String {
 }
 
 fun HourlyForecast.getFormattedTime() =
-    LocalDateTime.parse(timestamp).toString(HourlyTimestampFormat)
+    LocalDateTime(timestamp).toString(HourlyTimestampFormat)
         .toUpperCase(Locale.getDefault())
 
 fun DailyForecast.generateColorBasedOnForecast(): Color {

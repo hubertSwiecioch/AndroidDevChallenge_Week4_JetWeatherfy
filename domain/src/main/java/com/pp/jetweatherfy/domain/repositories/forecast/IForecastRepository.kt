@@ -16,7 +16,8 @@
 package com.pp.jetweatherfy.domain.repositories.forecast
 
 import com.pp.jetweatherfy.domain.model.Forecast
+import com.pp.jetweatherfy.domain.model.Location
 
 interface IForecastRepository {
-    suspend fun getForecast(city: String): Forecast
+    suspend fun getForecast(location: Location): Forecast
 }

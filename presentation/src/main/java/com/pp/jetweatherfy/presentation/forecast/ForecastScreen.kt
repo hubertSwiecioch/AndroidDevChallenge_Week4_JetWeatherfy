@@ -18,6 +18,7 @@ package com.pp.jetweatherfy.presentation.forecast
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import com.pp.jetweatherfy.domain.model.Location
 import com.pp.jetweatherfy.presentation.forecast.components.content.ForecastContent
 import com.pp.jetweatherfy.presentation.forecast.components.surface.ForecastSurface
 import com.pp.jetweatherfy.presentation.forecast.components.topbar.ForecastTopBar
@@ -52,7 +53,7 @@ fun ForecastScreen(viewModel: ForecastViewModel, onLocationRequested: () -> Unit
                 viewModel.onLocationEvent(SearchCities(query))
             },
             onCitySelected = { city ->
-                viewModel.onLocationEvent(SetLocation(city))
+                viewModel.onLocationEvent(SetLocation(Location(city, 0.0, 0.0)))
             }
         )
         ForecastContent(

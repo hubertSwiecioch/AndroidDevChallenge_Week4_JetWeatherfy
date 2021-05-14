@@ -21,7 +21,7 @@ data class Forecast(
 )
 
 data class DailyForecast(
-    val timestamp: String = "",
+    val timestamp: Long = 0,
     val hourlyForecasts: List<HourlyForecast> = listOf(),
     val temperature: Int = 0,
     val minTemperature: Int = 0,
@@ -32,7 +32,7 @@ data class DailyForecast(
 )
 
 data class HourlyForecast(
-    val timestamp: String,
+    val timestamp: Long,
     val temperature: Int,
     val weather: Weather
 )

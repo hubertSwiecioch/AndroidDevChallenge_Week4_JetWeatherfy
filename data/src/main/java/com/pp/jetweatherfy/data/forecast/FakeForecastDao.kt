@@ -48,7 +48,7 @@ class FakeForecastDao : ForecastDao {
             val weather = generateWeather(temperature, windSpeed, precipitation)
 
             DailyForecast(
-                timestamp = day.toString(),
+                timestamp = day.toDateTime().millis,
                 hourlyForecasts = generateHourlyForecasts(
                     temperature,
                     maxTemperature,
@@ -88,7 +88,7 @@ class FakeForecastDao : ForecastDao {
             val weather = generateWeather(temperature, windSpeed, precipitation)
 
             HourlyForecast(
-                timestamp = hour.toString(),
+                timestamp = hour.toDateTime().millis,
                 temperature = temperature,
                 weather = weather
             )

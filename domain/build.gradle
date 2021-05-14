@@ -47,6 +47,7 @@ dependencies {
 
     implementation Libs.Kotlin.stdlib
     implementation Libs.Coroutines.core
+    implementation Libs.Gson.gson
 
     testImplementation Tests.junit
     testImplementation Libs.Coroutines.test

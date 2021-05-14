@@ -78,6 +78,7 @@ dependencies {
     implementation Libs.Lottie.lottie
     implementation Libs.Accompanist.insets
     implementation Libs.GoogleLocation.location
+    implementation Libs.Gson.gson
 
     implementation Libs.Hilt.library
     kapt Libs.Hilt.googleAndroidCompiler

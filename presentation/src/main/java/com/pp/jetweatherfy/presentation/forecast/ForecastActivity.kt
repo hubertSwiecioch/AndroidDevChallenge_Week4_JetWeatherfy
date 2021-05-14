@@ -25,6 +25,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigate
 import androidx.navigation.compose.rememberNavController
+import com.pp.jetweatherfy.domain.model.Location
 import com.pp.jetweatherfy.presentation.forecast.base.LocationActivity
 import com.pp.jetweatherfy.presentation.forecast.events.LocationViewEvent
 import com.pp.jetweatherfy.presentation.forecast.navigation.NavigationDirections
@@ -56,8 +57,8 @@ class ForecastActivity : LocationActivity() {
         }
     }
 
-    override fun onLocationSuccess(cityName: String) {
-        forecastViewModel?.onLocationEvent(LocationViewEvent.SetLocation(cityName))
+    override fun onLocationSuccess(location: Location) {
+        forecastViewModel?.onLocationEvent(LocationViewEvent.SetLocation(location))
     }
 
     override fun onLocationFailure() {

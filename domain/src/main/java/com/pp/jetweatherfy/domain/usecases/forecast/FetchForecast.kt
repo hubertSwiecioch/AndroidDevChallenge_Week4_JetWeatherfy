@@ -15,10 +15,12 @@
  */
 package com.pp.jetweatherfy.domain.usecases.forecast
 
+import com.google.gson.Gson
 import com.pp.jetweatherfy.domain.base.FlowUseCase
 import com.pp.jetweatherfy.domain.base.Result
 import com.pp.jetweatherfy.domain.di.IoDispatcher
 import com.pp.jetweatherfy.domain.model.Forecast
+import com.pp.jetweatherfy.domain.model.Location
 import com.pp.jetweatherfy.domain.repositories.forecast.IForecastRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -27,13 +29,13 @@ import javax.inject.Inject
 
 class FetchForecast @Inject constructor(
     private val forecastRepository: IForecastRepository,
-    @IoDispatcher dispatcher: CoroutineDispatcher
+    @IoDispatcher dispatcher: CoroutineDispatcher,
 ) : FlowUseCase<String, Forecast>(dispatcher) {
 
     override fun execute(parameters: String): Flow<Result<Forecast>> {
         return flow {
             emit(Result.Loading)
-            emit(Result.Success(forecastRepository.getForecast(parameters)))
+            emit(Result.Success(forecastRepository.getForecast(Gson().fromJson(parameters, Location::class.java))))
         }
     }
 }

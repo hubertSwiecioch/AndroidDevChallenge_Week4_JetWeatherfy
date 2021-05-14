@@ -17,6 +17,7 @@ package com.pp.jetweatherfy.presentation.forecast
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.google.gson.Gson
 import com.pp.jetweatherfy.domain.base.successOr
 import com.pp.jetweatherfy.domain.model.DailyForecast
 import com.pp.jetweatherfy.domain.model.Forecast
@@ -64,7 +65,7 @@ class ForecastViewModel @Inject constructor(
     fun onForecastEvent(event: ForecastViewEvent) = viewModelScope.launch {
         when (event) {
             is GetForecast -> {
-                fetchForecast(event.city).collectLatest { result ->
+                fetchForecast(Gson().toJson(event.location)).collectLatest { result ->
                     val forecast = result.successOr(Forecast())
                     _forecastViewState.emit(
                         forecastViewState.value.copy(
@@ -120,11 +121,11 @@ class ForecastViewModel @Inject constructor(
             is SetLocation -> {
                 onForecastEvent(GetForecast(event.location))
 
-                addCity(event.location)
-                fetchCities(event.location).collectLatest { cities ->
+                addCity(event.location.name)
+                fetchCities(event.location.name).collectLatest { cities ->
                     _locationViewState.emit(
                         locationViewState.value.copy(
-                            query = event.location,
+                            query = event.location.name,
                             cities = cities.successOr(emptyList()),
                             errorGettingLocation = false,
                             errorGettingPermissions = false

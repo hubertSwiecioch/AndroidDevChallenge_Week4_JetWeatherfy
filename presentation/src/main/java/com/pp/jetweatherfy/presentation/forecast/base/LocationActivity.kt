@@ -25,6 +25,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
 import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationResult
+import com.pp.jetweatherfy.domain.model.Location
 import com.pp.jetweatherfy.presentation.utils.askPermissions
 import com.pp.jetweatherfy.presentation.utils.hasPermissions
 import dagger.hilt.android.AndroidEntryPoint
@@ -78,7 +79,7 @@ abstract class LocationActivity : AppCompatActivity() {
                         geoCoder.getFromLocation(location.latitude, location.longitude, 1)
                             .firstOrNull()?.locality
                     if (cityName != null)
-                        onLocationSuccess(cityName)
+                        onLocationSuccess(Location(cityName, location.latitude, location.longitude))
                     else
                         onLocationFailure()
                 } ?: run {
@@ -92,7 +93,7 @@ abstract class LocationActivity : AppCompatActivity() {
             }
     }
 
-    abstract fun onLocationSuccess(cityName: String)
+    abstract fun onLocationSuccess(location: Location)
     abstract fun onLocationFailure()
     abstract fun onLocationRequestCanceled()
 
